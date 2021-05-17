@@ -43,7 +43,7 @@ M, _=   cv2.findHomography(srcPoints,desPoints,cv2.RANSAC,5.0)
 imgScan = cv2.warpPerspective(imgOpel,M,(882,1397))
 
 cv2.imshow("XXX",imgScan)
-imgShow = imgQ.copy()
+imgShow = imgOpel.copy()
 imgMask = np.zeros_like(imgShow)
 
 #A. Nr rejestracyjny
@@ -217,6 +217,8 @@ imgShow = cv2.addWeighted(imgShow,0.99,imgMask,0.9,0)
 cv2.imshow("MASKA", imgMask)
 cv2.imshow("Oryginal_maska", imgShow)
 
+
+
 imgCrop1 = imgScan[70:90, 130:280]
 cv2.imshow("A. - nr rejestracyjny", imgCrop1)
 
@@ -289,18 +291,18 @@ cv2.imshow("V.9 - spełniana forma emisji spalin w/g UE", imgCrop29)
 imgCrop30 = imgScan[660:680, 330:470]
 cv2.imshow("X.1 - Data ważności przeglądu technicznego", imgCrop30)
 
-imgCrop31 = imgScan[560:580, 204:280]
-cv2.imshow("Y.1 - Moc administracyjna we Francji", imgCrop31)
-imgCrop32 = imgScan[560:580, 322:380]
-cv2.imshow("Y.2 - Moc administracyjna we Francji", imgCrop32)
-imgCrop33 = imgScan[577:593, 203:280]
-cv2.imshow("Y.3 - Moc administracyjna we Francji", imgCrop33)
-imgCrop34 = imgScan[577:593, 322:380]
-cv2.imshow("Y.4 - Moc administracyjna we Francji", imgCrop34)
-imgCrop35 = imgScan[590:610, 202:280]
-cv2.imshow("Y.5 - Moc administracyjna we Francji", imgCrop35)
-imgCrop36 = imgScan[590:610, 323:380]
-cv2.imshow("Y.6 - Moc administracyjna we Francji", imgCrop36)
+imgCrop31 = imgScan[680:705, 140:266]
+cv2.imshow("Y1 - Podatek regionalny", imgCrop31)
+imgCrop32 = imgScan[680:705, 305:425]
+cv2.imshow("Y2- Podatek dodatkowy", imgCrop32)
+imgCrop33 = imgScan[700:724, 140:266]
+cv2.imshow("Y3 - Podatek ekologiczny", imgCrop33)
+imgCrop34 = imgScan[700:724, 305:425]
+cv2.imshow("Y4 - Podatek za usluge administracyjna", imgCrop34)
+imgCrop35 = imgScan[722:747, 140:266]
+cv2.imshow("Y5 - Podatek za wysylke droga pocztowa", imgCrop35)
+imgCrop36 = imgScan[722:747, 305:425]
+cv2.imshow("Y6 - Suma podatku", imgCrop36)
 
 imgCrop37 = imgScan[798:820, 140:280]
 cv2.imshow("I - Data wystawienia dowodu", imgCrop37)
@@ -310,6 +312,9 @@ cv2.imshow("Dolna czesc - odcieta", imgCrop333)
 imgCrop444 = imgScan[1290:1370, 100:750]
 cv2.imshow("Kod na dole", imgCrop444)
 
+imgCrop555 = imgScan[1330:1355, 550:708]
+cv2.imshow("Oznaczenie dokumentu", imgCrop555)
+
 
 
 TGREEN =  '\033[32m' # Green Text
@@ -318,10 +323,11 @@ ENDC = '\033[m' # reset to the defaults
 from datetime import date
 today = date.today()
 d1 = today.strftime("%d/%m/%Y")
-print("OTMUCHÓW", d1, '\n')
+print("OTMUCHÓW", TGREEN+d1,'\n',ENDC)
 
 print('UWIERZYTELNIONE TŁUMACZENIE Z JĘZYKA FRANCUSKIEGO - DOWÓD REJESTRACYJNY POJAZDU \n')
 print('REPUBLIKA FRANCUSKA  F Unia Europejska   Ministerstwo Spraw Wewnętrznych \n')
+print('Oznaczenie dokumentu:',TGREEN+pytesseract.image_to_string(imgCrop555),ENDC)
 print('Dowód rejestracyjny fr - dane z cz_1: \n')
 print('(A.) Nr rejestracyjny:', TGREEN + pytesseract.image_to_string(imgCrop1), ENDC)
 print('(B) Data pierwszej rejestracji:', TGREEN + pytesseract.image_to_string(imgCrop2), ENDC)
@@ -355,11 +361,20 @@ print('(V.7) Emisja CO2 [g/km]:', TGREEN + pytesseract.image_to_string(imgCrop28
 print('(V.9) Spełniana forma emisji spalin w/g UE:', TGREEN + pytesseract.image_to_string(imgCrop29), ENDC)
 print('(X.1) Data ważności przeglądu technicznego:', TGREEN + pytesseract.image_to_string(imgCrop30), ENDC)
 
+print('(Y.1) Podatek regionalny:', TGREEN + pytesseract.image_to_string(imgCrop31), ENDC)
+print('(Y.2) Podatek dodatkowy:', TGREEN + pytesseract.image_to_string(imgCrop32), ENDC)
+print('(Y.3) Podatek ekologiczny:', TGREEN + pytesseract.image_to_string(imgCrop33), ENDC)
+print('(Y.4) Podatek za usluge administracyjna:', TGREEN + pytesseract.image_to_string(imgCrop34), ENDC)
+print('(Y.5) Podatek za wysylke droga pocztowa:', TGREEN + pytesseract.image_to_string(imgCrop35), ENDC)
+print('(Y.6) Suma:', TGREEN + pytesseract.image_to_string(imgCrop36), ENDC)
+
 print('(I) Data wystawienia dowodu:', TGREEN + pytesseract.image_to_string(imgCrop37), ENDC)
 print('Dolna czesc odcieta:\n',TGREEN+pytesseract.image_to_string(imgCrop333),ENDC)
 print('Kod na dole:\n',TGREEN+pytesseract.image_to_string(imgCrop444),ENDC)
 
 
+tex_0 = pytesseract.image_to_string(imgCrop555)
+x_tex_0 = tex_0.rstrip()
 tex_1 = pytesseract.image_to_string(imgCrop1)
 x_tex_1 = tex_1.rstrip()
 tex_2 = pytesseract.image_to_string(imgCrop2)
@@ -368,12 +383,84 @@ tex_3 = pytesseract.image_to_string(imgCrop3)
 x_tex_3 = tex_3.rstrip()
 tex_4 = pytesseract.image_to_string(imgCrop4)
 x_tex_4 = tex_4.rstrip()
+tex_5 = pytesseract.image_to_string(imgCrop5)
+x_tex_5 = tex_5.rstrip()
+tex_6 = pytesseract.image_to_string(imgCrop6)
+x_tex_6 = tex_6.rstrip()
+tex_7 = pytesseract.image_to_string(imgCrop7)
+x_tex_7 = tex_7.rstrip()
+tex_E = pytesseract.image_to_string(imgCropE)
+x_tex_E = tex_E.rstrip()
+tex_8 = pytesseract.image_to_string(imgCrop8)
+x_tex_8 = tex_8.rstrip()
+tex_9 = pytesseract.image_to_string(imgCrop9)
+x_tex_9 = tex_9.rstrip()
+tex_10 = pytesseract.image_to_string(imgCrop10)
+x_tex_10 = tex_10.rstrip()
+tex_11 = pytesseract.image_to_string(imgCrop11)
+x_tex_11 = tex_11.rstrip()
+tex_12 = pytesseract.image_to_string(imgCrop12)
+x_tex_12 = tex_12.rstrip()
+tex_13 = pytesseract.image_to_string(imgCrop13)
+x_tex_13 = tex_13.rstrip()
+tex_14 = pytesseract.image_to_string(imgCrop14)
+x_tex_14 = tex_14.rstrip()
+tex_15 = pytesseract.image_to_string(imgCrop15)
+x_tex_15 = tex_15.rstrip()
+tex_16 = pytesseract.image_to_string(imgCrop16)
+x_tex_16 = tex_16.rstrip()
+tex_17 = pytesseract.image_to_string(imgCrop17)
+x_tex_17 = tex_17.rstrip()
+tex_18 = pytesseract.image_to_string(imgCrop18)
+x_tex_18 = tex_18.rstrip()
+tex_19 = pytesseract.image_to_string(imgCrop19)
+x_tex_19 = tex_19.rstrip()
+tex_20 = pytesseract.image_to_string(imgCrop20)
+x_tex_20 = tex_20.rstrip()
+tex_21 = pytesseract.image_to_string(imgCrop21)
+x_tex_21 = tex_21.rstrip()
+tex_22 = pytesseract.image_to_string(imgCrop22)
+x_tex_22 = tex_22.rstrip()
+tex_23 = pytesseract.image_to_string(imgCrop23)
+x_tex_23 = tex_23.rstrip()
+tex_24 = pytesseract.image_to_string(imgCrop24)
+x_tex_24 = tex_24.rstrip()
+tex_25 = pytesseract.image_to_string(imgCrop25)
+x_tex_25 = tex_25.rstrip()
+tex_26 = pytesseract.image_to_string(imgCrop26)
+x_tex_26 = tex_26.rstrip()
+tex_27 = pytesseract.image_to_string(imgCrop27)
+x_tex_27 = tex_27.rstrip()
+tex_28 = pytesseract.image_to_string(imgCrop28)
+x_tex_28 = tex_28.rstrip()
+tex_29 = pytesseract.image_to_string(imgCrop29)
+x_tex_29 = tex_29.rstrip()
+tex_30 = pytesseract.image_to_string(imgCrop30)
+x_tex_30 = tex_30.rstrip()
+tex_31 = pytesseract.image_to_string(imgCrop31)
+x_tex_31 = tex_31.rstrip()
+tex_32 = pytesseract.image_to_string(imgCrop32)
+x_tex_32 = tex_32.rstrip()
+tex_33 = pytesseract.image_to_string(imgCrop33)
+x_tex_33 = tex_33.rstrip()
+tex_34 = pytesseract.image_to_string(imgCrop34)
+x_tex_34 = tex_34.rstrip()
+tex_35 = pytesseract.image_to_string(imgCrop35)
+x_tex_35 = tex_35.rstrip()
+tex_36 = pytesseract.image_to_string(imgCrop36)
+x_tex_36 = tex_36.rstrip()
+tex_37 = pytesseract.image_to_string(imgCrop37)
+x_tex_37 = tex_37.rstrip()
+tex_333 = pytesseract.image_to_string(imgCrop333)
+x_tex_333 = tex_333.rstrip()
+tex_444 = pytesseract.image_to_string(imgCrop444)
+x_tex_444 = tex_444.rstrip()
 
 with open('DANE_auta2.csv', mode='w') as employee_file:
     employee_writer = csv.writer(employee_file)
 
-    employee_writer.writerow(['ID', 'Nr rejestracyjny', 'Data rejestracji', 'Właściciel pojazdu', 'Adres  wlasciciela'])
-    employee_writer.writerow(['1', x_tex_1, x_tex_2, x_tex_3, x_tex_4])
+    employee_writer.writerow(['ID', 'Data','Oznaczenie dumumentu', 'Nr rejestracyjny', 'Data rejestracji', 'Właściciel pojazdu', 'Adres  wlasciciela','Marka', 'Typ pojazdu', 'Kod CNIT','E - nr identyfikacyjny VIN"','Nazwa Handlowa','F1 - Masa max', 'F-2 - Masa max', 'F-3 - Masa max', 'G - Masa z kierowca', 'G1 - Masa pustego', 'J - Kategoria pojazdu', 'J.1 - Rodzaj pojazdu (fr)', 'J.2 - Typ karoserii (eu)', 'J.3 - Typ karoserii (fr)','K - Nr recepcji (import)', 'P.1 - Pojemność silnika','P.2 - Moc silnika ', 'P.3 - Rodzaj paliwa', 'P.6 - Moc administracyjna','Q - (tylko dla motocykli)','S.1 - Ilość miejsc siedzących','S.2 - Ilość miejsc stojacych','U.1 - Poziom halasu silnika w [dB]','U.2 - predkosc obrotowa silnika','V.7 - Emisja CO2 [g/km]','V.9 - Spełniana forma emisji spalin w/g UE','X.1 - Data ważności przeglądu technicznego','Y.1 - Podatek regionalny:','Y.2 - Podatek dodoatkowy:','Y.3 Podatek ekologiczny:','Y.4 - Podatek za usluge administracyjna','Y.5 -Podatek za wysylke poczta', 'Y.6 - Suma oplat','I - Data wystawienia dowodu', 'Dolna czesc odcieta', 'Kod'])
+    employee_writer.writerow(['1', d1,x_tex_0,x_tex_1, x_tex_2, 'x_tex_3', 'x_tex_4',x_tex_5,x_tex_6,x_tex_7,x_tex_E,x_tex_8, x_tex_9, x_tex_10,x_tex_11,x_tex_12,x_tex_13,x_tex_14,x_tex_15,x_tex_16,x_tex_17,x_tex_18,x_tex_19,x_tex_20,x_tex_21,x_tex_22,x_tex_23,x_tex_24,x_tex_25,x_tex_26,x_tex_27,x_tex_28,x_tex_29,x_tex_30,x_tex_31,x_tex_32,x_tex_33,x_tex_34,x_tex_35,x_tex_36,x_tex_37,x_tex_333,x_tex_444])
 
 
 
