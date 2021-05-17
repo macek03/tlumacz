@@ -1,8 +1,10 @@
-ID,Nr rejestracyjny,Data rejestracji,Właściciel pojazdu,Adres  wlasciciela
-1,AY-517-CD,05/01/2020,"LEREPAIRE
+ID,Oznaczenie dumumentu,Nr rejestracyjny,Data rejestracji,Właściciel pojazdu,Adres  wlasciciela,Marka,Typ pojazdu,Kod CNIT,"E - nr identyfikacyjny VIN""",Nazwa Handlowa,F1 - Masa max,F-2 - Masa max,F-3 - Masa max,G - Masa z kierowca,G1 - Masa pustego,J - Kategoria pojazdu,J.1 - Rodzaj pojazdu (fr),J.2 - Typ karoserii (eu),J.3 - Typ karoserii (fr),K - Nr recepcji (import),P.1 - Pojemność silnika,P.2 - Moc silnika ,P.3 - Rodzaj paliwa,P.6 - Moc administracyjna,Q - (tylko dla motocykli),S.1 - Ilość miejsc siedzących,S.2 - Ilość miejsc stojacych,U.1 - Poziom halasu silnika w [dB],U.2 - predkosc obrotowa silnika,V.7 - Emisja CO2 [g/km],V.9 - Spełniana forma emisji spalin w/g UE,X.1 - Data ważności przeglądu technicznego,Y.1 - Podatek regionalny:,Y.2 - Podatek dodoatkowy:,Y.3 Podatek ekologiczny:,Y.4 - Podatek za usluge administracyjna,Y.5 -Podatek za wysylke poczta,Y.6 - Suma oplat,I - Data wystawienia dowodu,Dolna czesc odcieta,Kod
+1,2020AS05284,AY-517-CD,05/01/2020,x_tex_3,x_tex_4,MARQUES,VERSION,MCT871LY312,VFSIV2020ASIV2020,MODELE,191,191,191,303,130,M1,MMT1,SOLO,sOLO,e2°*2001/116°%317*°02,1900,90,,,,,,TT,3000,155,,04/01/2024,"178,35",,,,,"178,35",01/03/2020,"AY-517-CD 01/03/2020
+2020AS05284
+VFSIV2020ASIV2020
+MARQUES
 
-DAVID","37 RUE DES BOIS
+LEREPAIRE
 
-59000 LILLE
-
-FRANCE"
+DAVID","CRFRAAB123CDOVFSIV2020ASIV202029801059VP<<<<
+CI<<MARQUE S<<<<<<<MODELE<<<<<<<2020AS0528402"
