@@ -11,4 +11,8 @@ STEPS:
   - https://www.youtube.com/watch?v=cUOcY9ZpKxw&t=1873s
 
 2) Creating PDF Form (Open Office/Libra)
-3) BulkPDF (importing data from CSV file to PDF form)
+  - https://www.youtube.com/watch?v=1mNJUSfX1vY
+  
+4) BulkPDF (importing data from CSV file to PDF form)
+  - https://www.youtube.com/watch?v=AqLJcUPIRYA
+  - https://bulkpdf.de/
