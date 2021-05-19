@@ -23,6 +23,9 @@ STEPS 2 :
   Creating Web App to upload and process image on server, and create output (PDF form) - in the best way.
     https://www.youtube.com/watch?v=ZCV7atq7l8g
     
+    Hindus: 
+    https://www.youtube.com/watch?v=ZCV7atq7l8g&t=368s
+    
 STEP 3 : 
   PyPDF2 library - to skip BulkPDF and fill out form straight from Python script:
      https://akdux.com/python/2020/10/31/python-fill-pdf-files.html
